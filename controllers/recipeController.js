@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Recipe = require("../models/Recipe");
 
-// Create
 exports.createRecipe = async (req, res) => {
   try {
     const recipe = await Recipe.create(req.body);
@@ -11,13 +10,11 @@ exports.createRecipe = async (req, res) => {
   }
 };
 
-// Get all
 exports.getAllRecipes = async (req, res) => {
   const recipes = await Recipe.find();
   res.json(recipes);
 };
 
-// Get by ID
 exports.getRecipeById = async (req, res) => {
   const { id } = req.params;
 
@@ -33,7 +30,6 @@ exports.getRecipeById = async (req, res) => {
   res.json(recipe);
 };
 
-// Update
 exports.updateRecipe = async (req, res) => {
   const recipe = await Recipe.findByIdAndUpdate(
     req.params.id,
@@ -43,8 +39,8 @@ exports.updateRecipe = async (req, res) => {
   res.json(recipe);
 };
 
-// Delete
 exports.deleteRecipe = async (req, res) => {
   await Recipe.findByIdAndDelete(req.params.id);
   res.json({ message: "Recipe deleted" });
 };
+
